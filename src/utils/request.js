@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MessageBox, Message } from 'element-ui';
+import { MessageBox, Notification } from 'element-ui';
 // import store from '@/store';
 
 const instance = axios.create({
@@ -26,9 +26,9 @@ instance.interceptors.response.use(
           //   });
         });
     } else {
-      Message({
+      Notification({
+        title: '服务端传回异常',
         type: 'warning',
-        showClose: true,
         message: data.message || '直接乱汤',
       });
     }

@@ -1,34 +1,59 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Layout from '../views/Layout.vue';
-import Login from '../views/Login/Login.vue';
-import User from '../views/User/User.vue';
-import BlogList from '../views/BlogList/BlogList.vue';
+import Home from '../views/Home/Home.vue';
+import BlogList from '../views/Blog/BlogList.vue';
+import BlogDetail from '../views/Blog/BlogDetail.vue';
+import UserLogin from '../views/User/UserLogin.vue';
+import UserList from '../views/User/UserList.vue';
+import UserCenter from '../views/User/UserCenter.vue';
+import Document from '../views/Document/Document.vue';
 
 Vue.use(VueRouter);
 
 const routes = [{
   path: '/login',
-  name: 'Login',
-  component: Login,
+  name: 'UserLogin',
+  component: UserLogin,
 }, {
   path: '/',
   component: Layout,
   children: [
     {
-      path: '/user',
-      name: 'User',
-      component: User,
+      path: '/',
+      name: 'Home',
+      component: Home,
+      meta: [{ name: '首页', url: '/' }],
     },
-  ],
-}, {
-  path: '/',
-  component: Layout,
-  children: [
     {
       path: '/blog',
       name: 'BlogList',
       component: BlogList,
+      meta: [{ name: '首页', url: '/' }, { name: '文章管理', }, { name: '文章列表' }],
+    },
+    {
+      path: '/blog/:id',
+      name: 'BlogDetail',
+      component: BlogDetail,
+      meta: [{ name: '首页', url: '/' }, { name: '文章管理', url: '/blog' }, { name: '文章详情' }],
+    },
+    {
+      path: '/user',
+      name: 'UserList',
+      component: UserList,
+      meta: [{ name: '首页', url: '/' }, { name: '用户管理', }, { name: '用户列表' }],
+    },
+    {
+      path: '/me',
+      name: 'UserCenter',
+      component: UserCenter,
+      meta: [{ name: '首页', url: '/' }, { name: '个人中心' }],
+    },
+    {
+      path: '/document',
+      name: 'Document',
+      component: Document,
+      meta: [{ name: '首页', url: '/' }, { name: '接口文档' }],
     },
   ],
 }];

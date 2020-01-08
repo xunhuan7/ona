@@ -101,7 +101,7 @@ export default {
                 message: res.message,
               });
               this.disabled = false;
-              this.$router.push('/user');
+              this.$router.push('/');
             })
             .catch(() => {
               this.disabled = false;
